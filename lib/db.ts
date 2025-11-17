@@ -1,6 +1,6 @@
 
 import { openDB, DBSchema, IDBPDatabase } from 'idb';
-import type { Profile, Note, TimetableEntry, SemesterResult, DocumentFile, PomodoroStat, Task, Habit, HabitLog, Syllabus } from '../types';
+import type { Profile, Note, TimetableEntry, SemesterResult, DocumentFile, PomodoroStat, Task, Habit, HabitLog, Syllabus, ReferenceCategory, ReferenceItem } from '../types';
 
 interface StudyHubDB extends DBSchema {
   profiles: {
@@ -52,13 +52,23 @@ interface StudyHubDB extends DBSchema {
     value: Syllabus;
     indexes: { 'profileId': number };
   };
+  referenceCategories: {
+    key: number;
+    value: ReferenceCategory;
+    indexes: { 'profileId': number };
+  };
+  referenceItems: {
+    key: number;
+    value: ReferenceItem;
+    indexes: { 'profileId': number; 'categoryId': number };
+  };
 }
 
 let dbPromise: Promise<IDBPDatabase<StudyHubDB>> | null = null;
 
 export const getDb = () => {
   if (!dbPromise) {
-    dbPromise = openDB<StudyHubDB>('studyhub-db', 3, {
+    dbPromise = openDB<StudyHubDB>('studyhub-db', 4, {
       upgrade(db, oldVersion, newVersion, tx) {
         if (oldVersion < 1) {
             // Initial schema from version 1
@@ -107,6 +117,14 @@ export const getDb = () => {
 
             const syllabusStore = db.createObjectStore('syllabuses', { keyPath: 'id', autoIncrement: true });
             syllabusStore.createIndex('profileId', 'profileId');
+        }
+        if (oldVersion < 4) {
+            const categoriesStore = db.createObjectStore('referenceCategories', { keyPath: 'id', autoIncrement: true });
+            categoriesStore.createIndex('profileId', 'profileId');
+
+            const itemsStore = db.createObjectStore('referenceItems', { keyPath: 'id', autoIncrement: true });
+            itemsStore.createIndex('profileId', 'profileId');
+            itemsStore.createIndex('categoryId', 'categoryId');
         }
       },
     });

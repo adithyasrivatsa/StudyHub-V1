@@ -96,4 +96,21 @@ export interface Syllabus {
     createdAt: Date;
 }
 
-export type View = 'dashboard' | 'notes' | 'timetable' | 'performance' | 'more' | 'pomodoro' | 'documents' | 'aitools' | 'profiles' | 'tasks' | 'habits' | 'syllabus' | 'opportunities';
+export interface ReferenceCategory {
+  id: number;
+  profileId: number;
+  name: string;
+  createdAt: Date;
+}
+
+export interface ReferenceItem {
+  id: number;
+  profileId: number;
+  categoryId: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type View = 'dashboard' | 'notes' | 'timetable' | 'performance' | 'more' | 'pomodoro' | 'documents' | 'aitools' | 'profiles' | 'tasks' | 'habits' | 'syllabus' | 'opportunities' | 'formulabook';

@@ -17,6 +17,7 @@ import Tasks from './components/Tasks';
 import Habits from './components/Habits';
 import SyllabusTracker from './components/SyllabusTracker';
 import Opportunities from './components/Opportunities';
+import FormulaBook from './components/FormulaBook';
 
 const App: React.FC = () => {
   const { currentProfile, view, setView } = useProfile();
@@ -65,6 +66,8 @@ const App: React.FC = () => {
         return <SyllabusTracker />;
       case 'opportunities':
         return <Opportunities />;
+      case 'formulabook':
+        return <FormulaBook />;
       default:
         return <Dashboard />;
     }

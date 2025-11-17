@@ -1,13 +1,14 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { getDb } from '../lib/db';
 import type { IDBPDatabase } from 'idb';
 // FIX: Import all necessary types for the database stores.
-import { Note, TimetableEntry, SemesterResult, DocumentFile, PomodoroStat, Task, Habit, HabitLog, Syllabus } from '../types';
+import { Note, TimetableEntry, SemesterResult, DocumentFile, PomodoroStat, Task, Habit, HabitLog, Syllabus, ReferenceCategory, ReferenceItem } from '../types';
 
 // FIX: Expand StoreName to include all stores that use this hook.
-type StoreName = 'notes' | 'timetable' | 'performance' | 'documents' | 'pomodoroStats' | 'tasks' | 'habits' | 'habitLogs' | 'syllabuses';
+type StoreName = 'notes' | 'timetable' | 'performance' | 'documents' | 'pomodoroStats' | 'tasks' | 'habits' | 'habitLogs' | 'syllabuses' | 'referenceCategories' | 'referenceItems';
 // FIX: Expand StoreValue to include all value types for the stores.
-type StoreValue = Note | TimetableEntry | SemesterResult | DocumentFile | PomodoroStat | Task | Habit | HabitLog | Syllabus;
+type StoreValue = Note | TimetableEntry | SemesterResult | DocumentFile | PomodoroStat | Task | Habit | HabitLog | Syllabus | ReferenceCategory | ReferenceItem;
 
 export function useDb<T extends StoreValue>(storeName: StoreName, profileId: number | undefined) {
   const [data, setData] = useState<T[]>([]);

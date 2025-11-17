@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { getDb } from '../lib/db';
 import type { Profile, View } from '../types';
@@ -61,7 +62,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
         return;
     }
     const db = await getDb();
-    const stores = ['notes', 'timetable', 'performance', 'documents', 'pomodoroStats'];
+    const stores = ['notes', 'timetable', 'performance', 'documents', 'pomodoroStats', 'tasks', 'habits', 'habitLogs', 'syllabuses', 'referenceCategories', 'referenceItems'];
     const tx = db.transaction([...stores, 'profiles'], 'readwrite');
     
     await Promise.all([

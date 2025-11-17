@@ -5,6 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StudyHub</title>
+    <script>
+      // This config script must be placed before the main Tailwind CSS script.
+      // It explicitly enables class-based dark mode.
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#f9fafb" />

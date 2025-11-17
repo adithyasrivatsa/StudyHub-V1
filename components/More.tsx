@@ -48,6 +48,7 @@ const More: React.FC = () => {
   const menuItems = [
     { label: 'Pomodoro Timer', view: 'pomodoro' as View },
     { label: 'Documents & Certs', view: 'documents' as View },
+    { label: 'Formula Book', view: 'formulabook' as View },
     { label: 'AI Tools', view: 'aitools' as View },
     { label: 'Tasks & Assignments', view: 'tasks' as View },
     { label: 'Habit Tracker', view: 'habits' as View },

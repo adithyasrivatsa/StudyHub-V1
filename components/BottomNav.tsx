@@ -29,7 +29,7 @@ const NavItem: React.FC<{
 };
 
 const BottomNav: React.FC<BottomNavProps> = ({ activeView, setView }) => {
-  const isMoreActive = ['more', 'pomodoro', 'documents', 'aitools', 'profiles', 'tasks', 'habits', 'syllabus', 'opportunities'].includes(activeView);
+  const isMoreActive = ['more', 'pomodoro', 'documents', 'aitools', 'profiles', 'tasks', 'habits', 'syllabus', 'opportunities', 'formulabook'].includes(activeView);
   return (
     <nav className="fixed bottom-0 left-0 right-0 h-16 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700 shadow-t-lg z-50">
       <div className="flex justify-around items-center h-full max-w-lg mx-auto px-2">
