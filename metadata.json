@@ -1,0 +1,5 @@
+{
+  "name": "StudyHub",
+  "description": "A mobile-first, offline-first, privacy-focused productivity app for students. It includes tools for notes, timetables, pomodoro timer, performance tracking, and document storage, all designed to work without an internet connection. All user data is stored locally on the device.",
+  "requestFramePermissions": []
+}
